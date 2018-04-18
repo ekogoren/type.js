@@ -1,0 +1,13 @@
+.dg_ti_selector i{
+    font-style: normal;
+}
+
+.dg_ti_cursor:after {
+    content: "|";
+    animation: dg_ti_blinker 1s infinite;
+}
+
+@-webkit-keyframes dg_ti_blinker {
+    from { opacity: 1.0; }
+    to { opacity: 0.0; }
+}

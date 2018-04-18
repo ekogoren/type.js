@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+        <meta charset="UTF-8">
+        <title>Type.js</title>
+        <link rel="stylesheet" href="type.min.css" type="text/css" media="all">
+        <link rel="stylesheet" href="style.css" type="text/css" media="all">
+        <link rel="stylesheet" href="highlight/atom-one-dark.css">
+    </head>
+    <body>
+    <header>
+
+        <h1></h1>
+        <h2></h2>
+    </header>
+    <main>
+        <section id="one">
+
+            <h3>Features</h3>
+            <p>A super slim(2kb), free and simple to use library to type and erase text on the screen just as if it was typed by a keyboard.</p>
+            <p class="erase">This sentence is a mistake, I should have never write it in the first place.</p>
+
+
+            <pre><code class="javascript">
+
+    $(document).ready(function(){
+        //Instantiation
+        $("h1").type({typeSpeed:300, wait:100});
+        $("h2").type({typeSpeed:100, wait:50});
+        $(".erase").type({typeSpeed:50, wait:150});
+        //Action
+        $("h1").type('type',{textToType :'Type.js', done:'headingDone'});
+    });
+    //Callback functions
+    function headingDone(){
+        $("h2").type('type',{textToType:'Gimmick It Up', done:'erase'});
+    }
+
+    function erase(){
+        $(".erase").type('erase', {done :'colorText'});
+    }
+
+    function colorText(){
+        $("body p").addClass("white");
+    }
+
+
+            </code></pre>
+
+        </section>
+
+
+        <section id="two">
+
+            <h3>Usage</h3>
+            <h4>Set Up</h4>
+
+            <pre><code class="HTML">
+// Header
+<&zwj;link rel="stylesheet" type="text/css" href="type.min.css"/>
+//Before body closing tag
+<&zwj;script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"><&zwj;/script>
+<&zwj;script type="text/javascript" src="type.min.js"><&zwj;/script>
+            </code></pre>
+
+            <h4>instantiation</h4>
+            <p>The selector must be first instantiate with any number of possible options.
+                <b>Wait</b> will pause between end of execution and callback function or in between erase and type in <b>eraseAndType</b> method.
+                <b>showCursor</b> will show the cursor when typing or deleting action takes place while <b>constantCursor</b> will show the cursor regardless. These are the defaults:</p>
+
+            <pre><code class="javascript">
+    $("selector").type({
+    typeSpeed:250,
+    wait:500,
+    showCursor:true,
+    constantCursor:false
+    });
+
+            </code></pre>
+
+            <h4>Methods</h4>
+            <p>After instantiation methods can be called upon the selector where the first parameter is the method name and the second is an option object.
+            Global options can be overwritten and a <b>done</b> parameter can be added, a name of a function in the window scope that will be called once the action is done.</p>
+
+            <h5>Type</h5>
+
+            <b>Type</b> requires a <b>textToType</b> parameter, a string that will be appended to the selector's text content.
+
+            <h5>Erase</h5>
+
+            <b>Erase</b> will delete the current text content within the selector.
+
+            <h5>eraseAndType</h5>
+
+            <b>eraseAndType</b> will first delete the current text content within the selector and then write the text given in the required <b>textToType</b> parameter.
+
+
+            <h3>Examples</h3>
+
+            <p class="erase_and_type">Erase this text and then type it again</p>
+
+
+            <pre><code class="javascript">
+ $(document).ready(function(){
+      $(".erase_and_type").type({typeSpeed:40, wait:300, constantCursor:true});
+      $(".erase_and_type").type('eraseAndType',{textToType:"Erase this text and then type it again", done:'eraseAndType'});
+
+    });
+
+ function eraseAndType(){
+        $(".erase_and_type").type('eraseAndType',{textToType:"Erase this text and then type it again", done:'eraseAndType'});
+ }
+
+            </code></pre>
+
+
+            <p class="a_story"></p>
+
+            <pre><code class="javascript">
+ $(document).ready(function(){
+      $(".a_story").type({typeSpeed:170, wait:700,constantCursor:true});
+      story_1();
+    });
+
+ function story_1(){
+        $(".a_story").type('type', {textToType : 'This is a very long story. ', done:'story_2'});
+ }
+
+ function story_2(){
+    $(".a_story").type('type', {textToType : 'It has a few sentences slowly written down. ', done:'story_3'});
+ }
+
+ function story_3(){
+    $(".a_story").type('type', {textToType : 'But in the end it will be erased and written back for no good reason. ', done:'story_4'});
+ }
+
+ function story_4(){
+    $(".a_story").type('erase', {typeSpeed:10,done:'story_1'});
+ }
+
+            </code></pre>
+
+
+        </section>
+        <section id="three">
+
+            <h3>Important notes</h3>
+            <p></p>
+            <p>1. Type it does not currently support HTML tags, those will be broken by all actions.</p>
+            <p>2. Callback function ('done' parameter) must be in the window scope, that is outside any function such as document ready.</p>
+
+
+            <a href='https://github.com/ekogoren/type.js' target='_blank'><button>Get it on gitHub</button></a>
+
+
+        </section>
+
+
+
+            <script type="text/javascript">
+                $(document).ready(function(){
+                    $('pre code').each(function(i, block) {
+                        hljs.highlightBlock(block);
+                    });
+
+                    $("h1").type({typeSpeed:300, wait:100});
+                    $("h2").type({typeSpeed:100, wait:50});
+                    $(".erase").type({typeSpeed:50, wait:150});
+
+                    $(".erase_and_type").type({typeSpeed:40, wait:300,constantCursor:true});
+                    $(".erase_and_type").type('eraseAndType',{textToType:"Erase this text and then type it again", done:'eraseAndType'});
+
+                    $(".a_story").type({typeSpeed:170, wait:700,constantCursor:true});
+                    story_1();
+
+                    setTimeout(function(){$("h1").type('type', {textToType :'Type.js', done:'headingDone'});},500);
+                });
+
+                function headingDone(){
+                    $("h2").type('type', {textToType : 'Gimmick It Up', done:'erase'});
+                }
+
+                function erase(){
+                    $(".erase").type('erase', {done :'colorText'});
+                }
+
+                function colorText(){
+                    $("body p").addClass("white");
+                }
+
+                function eraseAndType(){
+                    $(".erase_and_type").type('eraseAndType',{textToType:"Erase this text and then type it again", done:'eraseAndType'});
+                }
+
+                function story_1(){
+                    $(".a_story").type('type', {textToType : 'This is a very long text. ', done:'story_2'});
+                }
+
+                function story_2(){
+                    $(".a_story").type('type', {textToType : 'It has a few sentences slowly written down. ', done:'story_3'});
+                }
+
+                function story_3(){
+                    $(".a_story").type('type', {textToType : 'But in the end it will be erased and written back again for no good reason. ', done:'story_4'});
+                }
+
+                function story_4(){
+                    $(".a_story").type('erase', {typeSpeed:10,done:'story_1'});
+                }
+
+            </script>
+
+        </section>
+
+
+    </main>
+
+    <script src="highlight/highlight.pack.js"></script>
+    <script></script>
+
+    <script src="type.min.js"></script>
+    </body>
+</html>
