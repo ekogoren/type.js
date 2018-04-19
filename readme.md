@@ -98,6 +98,11 @@ $(document).ready(function(){
  }
  ```
  
+ ## Important Notes
+ 
+ 1. Type does not currently support HTML tags, those will be broken by all actions.
+ 2. Callback function ('done' parameter) must be in the window scope, that is outside any function such as document ready.
+ 
  ## Licence
  Free to use and distribute.
  
