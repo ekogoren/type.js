@@ -22,8 +22,8 @@ A super slim(2kb), free and simple to use library to type and erase text on the 
 ### Instantiate
 
 The selector must be first instantiate with any number of possible options.
-<b>Wait</b>will pause between end of execution and callback function or in between erase and type in <b>eraseAndType</b> method.
-<b>showCursor</b>will show the cursor when typing or deleting action takes place while<b>constantCursor</b> will show the cursor regardless. These are the defaults:
+<b>Wait</b> will pause between end of execution and callback function or in between erase and type in <b>eraseAndType</b> method.
+<b>showCursor</b> will show the cursor when typing or deleting action takes place while<b>constantCursor</b> will show the cursor regardless. These are the defaults:
 ```javascript
 $("selector").type({
     typeSpeed:250,
@@ -33,20 +33,20 @@ $("selector").type({
     });
 ````
 
-### Methods
+## Methods
 
 After instantiation methods can be called upon the selector where the first parameter is the method name and the second is an option object.
 Global options can be overwritten and a <b>done</b> parameter can be added, a name of a function in the window scope that will be called once the action is done.
 
-#### Type
+### Type
 <b>Type</b> requires a <b>textToType</b> parameter, a string that will be appended to the selector's text content.
-#### Erase
+### Erase
 <b>Erase</b> will delete the current text content within the selector.
-#### eraseAndType
+### eraseAndType
 <b>eraseAndType</b> will first delete the current text content within the selector and then write the text given in the required <b>textToType</b> parameter.
 
 
-### Examples
+## Examples
 
 ```javascript
 $(document).ready(function(){
