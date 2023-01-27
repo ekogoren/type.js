@@ -1,8 +1,6 @@
 # Type.js
 
-![Screenshot](http://dgcult.com/github/type/type.png)
-
-[Official page, examples and live demo](http://dgcult.com/github/type/)
+[live demo](https://jsfiddle.net/yaojm2qe/4/)
 
 
 A super slim(2kb), free and simple to use library to type and erase text on the screen just as if it was typed by a keyboard.
