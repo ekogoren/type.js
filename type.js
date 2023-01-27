@@ -1,7 +1,3 @@
-
-
-
-
 (function(factory) { // $/jQuery
     'use strict';
     if (typeof define === 'function' && define.amd) { //require.js
